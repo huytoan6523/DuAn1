@@ -13,10 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
-/**
- *
- * @author PC
- */
+
 @Entity
 @Table(name = "KhachHang")
 public class KhachHang {
