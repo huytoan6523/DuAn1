@@ -4,7 +4,6 @@
  */
 package domainModels;
 
-import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +19,7 @@ public class KhuyenMai {
     @Column(name = "id", columnDefinition = "uniqueidentifier")
     @GenericGenerator(name = "generator", strategy = "guid", parameters = {})
     @GeneratedValue(generator = "generator")
-    private UUID id;
+    private String id;
 
     @Column(name = "Ma")
     private String ma;
@@ -38,12 +37,12 @@ public class KhuyenMai {
     private String phanTramKM;
 
     @Column(name = "TrangThai")
-    private String trangThai;
+    private Integer trangThai;
 
     public KhuyenMai() {
     }
 
-    public KhuyenMai(String ma, String tenKhuyenMai, String ngayBatDau, String ngayKetThuc, String phanTramKM, String trangThai) {
+    public KhuyenMai(String ma, String tenKhuyenMai, String ngayBatDau, String ngayKetThuc, String phanTramKM, Integer trangThai) {
         this.ma = ma;
         this.tenKhuyenMai = tenKhuyenMai;
         this.ngayBatDau = ngayBatDau;
@@ -52,11 +51,11 @@ public class KhuyenMai {
         this.trangThai = trangThai;
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -100,12 +99,17 @@ public class KhuyenMai {
         this.phanTramKM = phanTramKM;
     }
 
-    public String getTrangThai() {
+    public Integer getTrangThai() {
         return trangThai;
     }
 
-    public void setTrangThai(String trangThai) {
+    public void setTrangThai(Integer trangThai) {
         this.trangThai = trangThai;
+    }
+
+    @Override
+    public String toString() {
+        return "KhuyenMai{" + "id=" + id + ", ma=" + ma + ", tenKhuyenMai=" + tenKhuyenMai + ", ngayBatDau=" + ngayBatDau + ", ngayKetThuc=" + ngayKetThuc + ", phanTramKM=" + phanTramKM + ", trangThai=" + trangThai + '}';
     }
 
 }

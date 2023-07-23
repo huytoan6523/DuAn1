@@ -15,12 +15,12 @@ public interface IManageKhuyenMaiServive {
 
     List<KhuyenMai> getAll();
 
-    void addKhachHang(KhuyenMai khuyenMai);
+    void addKhuyenMai(KhuyenMai khuyenMai);
 
-    void updateKhachHang(KhuyenMai khuyenMai);
+    void updateKhuyenMai(KhuyenMai khuyenMai);
 
     KhuyenMai findByMa(String ma);
 
-    void deleteKhachHang(KhuyenMai khuyenMai);
+    void deleteKhuyenMai(KhuyenMai khuyenMai);
 
 }

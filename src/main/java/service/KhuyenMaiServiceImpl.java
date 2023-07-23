@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package service;
 
 import domainModels.KhuyenMai;
@@ -9,10 +5,7 @@ import java.util.List;
 import repositories.KhuyenMaiRepository;
 import service.impl.IManageKhuyenMaiServive;
 
-/**
- *
- * @author PC
- */
+
 public class KhuyenMaiServiceImpl implements IManageKhuyenMaiServive {
     
     private KhuyenMaiRepository khuyenMaiRepository;
@@ -28,12 +21,12 @@ public class KhuyenMaiServiceImpl implements IManageKhuyenMaiServive {
     }
     
     @Override
-    public void addKhachHang(KhuyenMai khuyenMai) {
+    public void addKhuyenMai(KhuyenMai khuyenMai) {
         this.khuyenMaiRepository.insert(khuyenMai);
     }
     
     @Override
-    public void updateKhachHang(KhuyenMai khuyenMai) {
+    public void updateKhuyenMai(KhuyenMai khuyenMai) {
         this.khuyenMaiRepository.update(khuyenMai);
     }
     
@@ -43,7 +36,7 @@ public class KhuyenMaiServiceImpl implements IManageKhuyenMaiServive {
     }
     
     @Override
-    public void deleteKhachHang(KhuyenMai khuyenMai) {
+    public void deleteKhuyenMai(KhuyenMai khuyenMai) {
         this.khuyenMaiRepository.delete(khuyenMai);
     }
     

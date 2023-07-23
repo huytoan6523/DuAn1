@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package repositories;
 
 
@@ -15,10 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import utils.HibernateUtil;
 
-/**
- *
- * @author PC
- */
+
 public class KhachHangRepository {
     List<KhachHang> khachHangList = new ArrayList<>();
     Session hSession = HibernateUtil.getFACTORY().openSession();
