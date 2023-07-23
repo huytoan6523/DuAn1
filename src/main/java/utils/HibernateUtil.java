@@ -1,6 +1,21 @@
 package utils;
 
+import domainModels.ChucVu;
+import domainModels.CuaHang;
+import domainModels.DonViTinh;
+import domainModels.DongGo;
+import domainModels.HoaDon;
+import domainModels.HoaDonChiTiet;
+import domainModels.HoaDonChiTietId;
 import domainModels.KhachHang;
+import domainModels.KhuyenMai;
+import domainModels.LoaiSP;
+import domainModels.NguonGoc;
+import domainModels.NhaCungCap;
+import domainModels.NhanVien;
+import domainModels.SPCT;
+import domainModels.SanPham;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -26,6 +41,21 @@ public class HibernateUtil {
 
         conf.setProperties(properties);
         conf.addAnnotatedClass(KhachHang.class);
+        conf.addAnnotatedClass(KhuyenMai.class);
+        conf.addAnnotatedClass(ChucVu.class);
+        conf.addAnnotatedClass(CuaHang.class);
+        conf.addAnnotatedClass(DonViTinh.class);
+        conf.addAnnotatedClass(DongGo.class);
+        conf.addAnnotatedClass(LoaiSP.class);
+        conf.addAnnotatedClass(NguonGoc.class);
+        conf.addAnnotatedClass(NhaCungCap.class);
+        conf.addAnnotatedClass(NhanVien.class);
+        conf.addAnnotatedClass(SPCT.class);
+        conf.addAnnotatedClass(SanPham.class);
+        conf.addAnnotatedClass(HoaDon.class);
+        conf.addAnnotatedClass(HoaDonChiTiet.class);
+        conf.addAnnotatedClass(HoaDonChiTietId.class);
+
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();
         FACTORY = conf.buildSessionFactory(registry);
