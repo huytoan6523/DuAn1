@@ -4,22 +4,20 @@
  */
 package repositories;
 
-import domainModels.ChiTietDoGo;
+
 import domainModels.NhanVien;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
-import utilities.mycompany.DBConext.HibernatUtil;
+import utils.HibernateUtil;
 
-/**
- *
- * @author Admin
- */
+
+
 public class DangNhapRepository {
 
     public List<NhanVien> getTK() {
         try {
-            Session session = HibernatUtil.getFACTORY().openSession();
+            Session session = HibernateUtil.getFACTORY().openSession();
             Query q = session.createQuery("FROM NhanVien Where TrangThai = 1");
             List<NhanVien> list = q.getResultList();
             return list;

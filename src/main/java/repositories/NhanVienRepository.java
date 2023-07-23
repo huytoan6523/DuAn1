@@ -13,19 +13,17 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-import utilities.mycompany.DBConext.HibernatUtil;
+import utils.HibernateUtil;
 
-/**
- *
- * @author Phuong Bi
- */
+
+
 public class NhanVienRepository {
 
     public List<Object[]> getAll(int b, int c) {
         
 
         try {
-            Session session = HibernatUtil.getFACTORY().openSession();
+            Session session = HibernateUtil.getFACTORY().openSession();
             Query q = session.createNativeQuery("Select A.Id, A.Ma, A.HoTen, A.Sdt, A.DiaChi, A.NgaySinh , A.Email,"
                     + " A.MatKhau,C.TenChucVu, B.TenCuaHang  from NhanVien A  left JOIN CuaHang B "
                     + "on A.IdCuaHang = B.Id "
@@ -51,7 +49,7 @@ public class NhanVienRepository {
         
         
         try {
-            Session session = HibernatUtil.getFACTORY().openSession();
+            Session session = HibernateUtil.getFACTORY().openSession();
             Query q = session.createQuery("FROM NhanVien where TrangThai = 1");
             List<NhanVien> list = q.getResultList();
             return list;
@@ -79,7 +77,7 @@ public class NhanVienRepository {
         
         int index = -1;
         try {
-            Session se = HibernatUtil.getFACTORY().openSession();
+            Session se = HibernateUtil.getFACTORY().openSession();
             Query q = se.createNativeQuery("Select A.Id, A.Ma, A.HoTen, A.Sdt, A.DiaChi, A.NgaySinh , "
                     + " C.TenChucVu, B.TenCuaHang  from NhanVien A  left JOIN CuaHang B  "
                     + " on A.IdCuaHang = B.Id  "
@@ -99,7 +97,7 @@ public class NhanVienRepository {
         
         
         try {
-            Session session = HibernatUtil.getFACTORY().openSession();
+            Session session = HibernateUtil.getFACTORY().openSession();
             Query q = session.createQuery("from NhanVien where TrangThai = 1 and HoTen like :ten");
             q.setParameter("ten", "%" + ten + "%");
             List<NhanVien> list = q.getResultList();
@@ -113,7 +111,7 @@ public class NhanVienRepository {
     public int getMaMax() {
         
         
-        Session se = HibernatUtil.getFACTORY().openSession();
+        Session se = HibernateUtil.getFACTORY().openSession();
         String maLonNhat = null;
         Query q = se.createQuery("select A.Ma From NhanVien A Where TrangThai = 1");
         List<String> i = q.getResultList(); //Lay list String 
@@ -143,7 +141,7 @@ public class NhanVienRepository {
         String ma = String.valueOf(getMaMax() + 1);
 
         try {
-            Session session = HibernatUtil.getFACTORY().openSession();
+            Session session = HibernateUtil.getFACTORY().openSession();
 
             NhanVien v = new NhanVien();
 
@@ -189,7 +187,7 @@ public class NhanVienRepository {
         
         
         try {
-            Session session = HibernatUtil.getFACTORY().openSession();
+            Session session = HibernateUtil.getFACTORY().openSession();
 
             NhanVien v = session.get(NhanVien.class, nv.getId());
 
@@ -231,7 +229,7 @@ public class NhanVienRepository {
         
         
         try {
-            Session se = HibernatUtil.getFACTORY().openSession();
+            Session se = HibernateUtil.getFACTORY().openSession();
             NhanVien sp = se.get(NhanVien.class, id);
             
             sp.setTrangThai(0);
