@@ -7,7 +7,7 @@ package service;
 import domainModels.SPCT;
 import java.util.List;
 import repositories.SPCTRepository;
-import services.impl.ISPCTService;
+import service.impl.ISPCTService;
 
 /**
  *

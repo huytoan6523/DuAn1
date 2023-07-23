@@ -8,8 +8,8 @@ import domainModels.SanPham;
 import java.util.ArrayList;
 import java.util.List;
 import repositories.SanPhamRepository;
-import services.impl.IManageSanPhamService;
-import viewsModel.ViewModelSanPham;
+import service.impl.IManageSanPhamService;
+import viewModel.ViewModelSanPham;
 
 /**
  *

@@ -7,7 +7,7 @@ package service;
 import domainModels.DongGo;
 import java.util.List;
 import repositories.DongGoRepository;
-import services.impl.IManageDongGoService;
+import service.impl.IManageDongGoService;
 
 /**
  *

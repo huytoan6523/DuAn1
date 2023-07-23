@@ -7,7 +7,7 @@ package service;
 import domainModels.DonViTinh;
 import java.util.List;
 import repositories.DonViTinhRepository;
-import services.impl.IManageDonViTinhService;
+import service.impl.IManageDonViTinhService;
 
 /**
  *

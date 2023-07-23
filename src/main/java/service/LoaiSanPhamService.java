@@ -7,7 +7,7 @@ package service;
 import domainModels.LoaiSP;
 import java.util.List;
 import repositories.LoaiSanPhamRepository;
-import services.impl.IManageLoaiSanPhamService;
+import service.impl.IManageLoaiSanPhamService;
 
 /**
  *

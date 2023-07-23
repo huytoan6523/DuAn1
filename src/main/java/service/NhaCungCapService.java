@@ -7,7 +7,7 @@ package service;
 import domainModels.NhaCungCap;
 import java.util.List;
 import repositories.NhaCungCapRepository;
-import services.impl.IManageNhaCungCapService;
+import service.impl.IManageNhaCungCapService;
 
 /**
  *

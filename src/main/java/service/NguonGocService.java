@@ -7,7 +7,7 @@ package service;
 import domainModels.NguonGoc;
 import java.util.List;
 import repositories.NguonGocRepository;
-import services.impl.IManageNguonGocService;
+import service.impl.IManageNguonGocService;
 
 /**
  *
