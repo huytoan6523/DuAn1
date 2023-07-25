@@ -27,12 +27,12 @@ public class HoaDonChiTiet implements Serializable {
     private HoaDonChiTietId id;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "IdChiTietDoGo", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "IdChiTietDoGo", referencedColumnName = "Id", insertable = false, updatable = false)
     private ChiTietDoGo ChiTietDoGo;
       
    
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "IdHoaDon", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "IdHoaDon", referencedColumnName = "Id", insertable = false, updatable = false)
     private HoaDon hoaDon;
             
     @Column(name = "SoLuong")

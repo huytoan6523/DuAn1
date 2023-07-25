@@ -14,9 +14,9 @@ import javax.persistence.JoinColumn;
  */
 @Embeddable
 public class HoaDonChiTietId implements Serializable{
-    @JoinColumn(name = "IdChiTietDoGo", referencedColumnName = "id")
+    @JoinColumn(name = "IdChiTietDoGo", referencedColumnName = "Id")
     private String IdChiTietDoGo;
     
-    @JoinColumn(name = "IdHoaDon", referencedColumnName = "id")
+    @JoinColumn(name = "IdHoaDon", referencedColumnName = "Id")
     private String IdHoaDon;
 }
