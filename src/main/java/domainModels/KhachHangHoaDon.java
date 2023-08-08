@@ -16,7 +16,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "KhachHang")
-public class KhachHang {
+public class KhachHangHoaDon {
 
     @Id
     @Column(name = "id", columnDefinition = "uniqueidentifier")
@@ -39,10 +39,10 @@ public class KhachHang {
     @Column(name = "TrangThai")
     private String trangThai;
 
-    public KhachHang() {
+    public KhachHangHoaDon() {
     }
 
-    public KhachHang(String ma, String ten, String sdt, String diaChi, String trangThai) {
+    public KhachHangHoaDon(String ma, String ten, String sdt, String diaChi, String trangThai) {
         this.ma = ma;
         this.ten = ten;
         this.sdt = sdt;

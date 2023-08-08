@@ -1,8 +1,8 @@
 package repositories;
 
 
-import domainModels.HoaDon;
-import domainModels.KhachHang;
+import domainModels.HoaDon1;
+import domainModels.KhachHangHoaDon;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
@@ -13,10 +13,10 @@ import utils.HibernateUtil;
 
 
 public class KhachHangRepository {
-    List<KhachHang> khachHangList = new ArrayList<>();
+    List<KhachHangHoaDon> khachHangList = new ArrayList<>();
     Session hSession = HibernateUtil.getFACTORY().openSession();
     
-    public void insert(KhachHang kh)
+    public void insert(KhachHangHoaDon kh)
     {
         Transaction transaction = this.hSession.getTransaction();
         try {
@@ -55,7 +55,7 @@ public class KhachHangRepository {
     }
     
 
-    public void update(KhachHang kh)
+    public void update(KhachHangHoaDon kh)
     {
         Transaction transaction = this.hSession.getTransaction();
         try {
@@ -68,7 +68,7 @@ public class KhachHangRepository {
         }
     }
 
-    public void delete(KhachHang kh)
+    public void delete(KhachHangHoaDon kh)
     {
         Transaction transaction = this.hSession.getTransaction();
         try {
@@ -81,30 +81,30 @@ public class KhachHangRepository {
         }
     }
 
-    public KhachHang findById(String id)
+    public KhachHangHoaDon findById(String id)
     {
-        return this.hSession.find(KhachHang.class, id);
+        return this.hSession.find(KhachHangHoaDon.class, id);
     }
 
-    public List<KhachHang> findAll()
+    public List<KhachHangHoaDon> findAll()
     {
         String hql = "SELECT obj FROM KhachHang obj";
-        TypedQuery<KhachHang> query = this.hSession.createQuery(hql, KhachHang.class);
+        TypedQuery<KhachHangHoaDon> query = this.hSession.createQuery(hql, KhachHangHoaDon.class);
         return query.getResultList();
     }
 
-    public KhachHang findByMa(String ma)
+    public KhachHangHoaDon findByMa(String ma)
     {
         String hql = "SELECT obj FROM KhachHang obj WHERE obj.Ma = ?1";
-        TypedQuery<KhachHang> query = this.hSession.createQuery(hql, KhachHang.class);
+        TypedQuery<KhachHangHoaDon> query = this.hSession.createQuery(hql, KhachHangHoaDon.class);
         query.setParameter(1, ma);
         return query.getSingleResult();
     }
     
-    public List<HoaDon> getHoaDon(KhachHang khachHang)
+    public List<HoaDon1> getHoaDon(KhachHangHoaDon khachHang)
     {
         String hql = "SELECT obj FROM HoaDon obj WHERE obj.khachHang = ?1";
-        TypedQuery<HoaDon> query = this.hSession.createQuery(hql, HoaDon.class);
+        TypedQuery<HoaDon1> query = this.hSession.createQuery(hql, HoaDon1.class);
         query.setParameter(1, khachHang);
         return query.getResultList();
     }

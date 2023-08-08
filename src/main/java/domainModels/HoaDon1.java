@@ -22,7 +22,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "HoaDon")
-public class HoaDon implements Serializable{
+public class HoaDon1 implements Serializable{
     @Id
     @Column(name = "Id")
     private String id;
@@ -54,7 +54,7 @@ public class HoaDon implements Serializable{
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdKhachHang", referencedColumnName = "Id")
-    private KhachHang KhachHang;
+    private KhachHangHoaDon KhachHang;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdNhanVien", referencedColumnName = "Id")
@@ -62,10 +62,10 @@ public class HoaDon implements Serializable{
 
     
     
-    public HoaDon() {
+    public HoaDon1() {
     }
 
-    public HoaDon(String id, String ma, Date ngayTao, Date ngayThanhToan, Integer trangThaiHoaDon, Date ngayNhan, Integer trangThai, BigDecimal thanhTien, KhuyenMai khuyenMai, KhachHang KhachHang, NhanVien nhanVien) {
+    public HoaDon1(String id, String ma, Date ngayTao, Date ngayThanhToan, Integer trangThaiHoaDon, Date ngayNhan, Integer trangThai, BigDecimal thanhTien, KhuyenMai khuyenMai, KhachHangHoaDon KhachHang, NhanVien nhanVien) {
         this.id = id;
         this.ma = ma;
         this.ngayTao = ngayTao;
@@ -115,7 +115,7 @@ public class HoaDon implements Serializable{
         return khuyenMai;
     }
 
-    public KhachHang getKhachHang() {
+    public KhachHangHoaDon getKhachHang() {
         return KhachHang;
     }
 
@@ -159,7 +159,7 @@ public class HoaDon implements Serializable{
         this.khuyenMai = khuyenMai;
     }
 
-    public void setKhachHang(KhachHang KhachHang) {
+    public void setKhachHang(KhachHangHoaDon KhachHang) {
         this.KhachHang = KhachHang;
     }
 

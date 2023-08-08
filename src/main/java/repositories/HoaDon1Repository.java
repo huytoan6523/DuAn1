@@ -4,9 +4,9 @@
  */
 package repositories;
 
-import domainModels.HoaDon;
-import domainModels.HoaDonChiTiet;
-import domainModels.KhachHang;
+import domainModels.HoaDon1;
+import domainModels.HoaDonChiTietHoaDon;
+import domainModels.KhachHangHoaDon;
 import domainModels.KhuyenMai;
 import domainModels.NhanVien;
 import java.util.ArrayList;
@@ -22,23 +22,23 @@ import utils.HibernateUtil;
  *
  * @author PhiLT
  */
-public class HoaDonRepository {
+public class HoaDon1Repository {
     private Session s = HibernateUtil.getFACTORY().openSession();
-    public List<HoaDon> getALHoaDon(){
-        List<HoaDon> lst = new ArrayList<>();
+    public List<HoaDon1> getALHoaDon(){
+        List<HoaDon1> lst = new ArrayList<>();
         String hql = "From HoaDon order by ngayTao desc";
-        lst = s.createQuery(hql, HoaDon.class).getResultList();
+        lst = s.createQuery(hql, HoaDon1.class).getResultList();
         return lst;
     }
-    public List<HoaDon> getHoaDonByMa(String ma){
-        List<HoaDon> lst = new ArrayList<>();
+    public List<HoaDon1> getHoaDonByMa(String ma){
+        List<HoaDon1> lst = new ArrayList<>();
         String hql = "From HoaDon where ma like :ma";
-        Query query = s.createQuery(hql, HoaDon.class);
+        Query query = s.createQuery(hql, HoaDon1.class);
         query.setParameter("ma", "%"+ma+"%");
         lst = query.getResultList();
         return lst;
     }
-    public Boolean addOrUpdateHoaDon(HoaDon hoaDon){
+    public Boolean addOrUpdateHoaDon(HoaDon1 hoaDon){
         Boolean check = false;
         Transaction tran = s.beginTransaction();
         try{
@@ -52,11 +52,11 @@ public class HoaDonRepository {
         }
         return check;
     }
-    public HoaDon getOneHDByMa(String ma){
+    public HoaDon1 getOneHDByMa(String ma){
         String hql = "from HoaDon where ma=:ma";
-            TypedQuery<HoaDon> query = s.createQuery(hql);
+            TypedQuery<HoaDon1> query = s.createQuery(hql);
             query.setParameter("ma", ma);
-            HoaDon hoaDon = query.getSingleResult();
+            HoaDon1 hoaDon = query.getSingleResult();
         return hoaDon;
     }
     
@@ -76,25 +76,25 @@ public class HoaDonRepository {
         }
         return check;
     }
-    public List<HoaDonChiTiet> getAllHDCT(String idHD){
-        List<HoaDonChiTiet> lst = new ArrayList<>();
+    public List<HoaDonChiTietHoaDon> getAllHDCT(String idHD){
+        List<HoaDonChiTietHoaDon> lst = new ArrayList<>();
         String hql = "from HoaDonChiTiet hdct where hdct.hoaDon.id=:idHD";
-        TypedQuery<HoaDonChiTiet> query = s.createQuery(hql, HoaDonChiTiet.class);
+        TypedQuery<HoaDonChiTietHoaDon> query = s.createQuery(hql, HoaDonChiTietHoaDon.class);
         query.setParameter("idHD", idHD);
         lst = query.getResultList();
         return lst;
     }
     
-    public HoaDonChiTiet getOneHDCT(String idSP, String idHD){
-       HoaDonChiTiet hdct = new HoaDonChiTiet();
+    public HoaDonChiTietHoaDon getOneHDCT(String idSP, String idHD){
+       HoaDonChiTietHoaDon hdct = new HoaDonChiTietHoaDon();
         String hql = "From HoaDonChiTiet where  hdct.ChiTietDoGo.id=:idSP and hdct.hoaDon.id=:idHD";
-        TypedQuery<HoaDonChiTiet> query = s.createQuery(hql, HoaDonChiTiet.class);
+        TypedQuery<HoaDonChiTietHoaDon> query = s.createQuery(hql, HoaDonChiTietHoaDon.class);
         query.setParameter("idSP", idSP);
         query.setParameter("idHD", idHD);
         hdct = query.getSingleResult();
         return hdct;
     }
-    public Boolean addOrUpdateHDCT(HoaDonChiTiet hdct){
+    public Boolean addOrUpdateHDCT(HoaDonChiTietHoaDon hdct){
         Boolean check = false;
         Transaction tran = s.beginTransaction();
         try{
@@ -113,7 +113,7 @@ public class HoaDonRepository {
         String hql = "delete from HoaDonChiTiet hdct where  hdct.ChiTietDoGo.id=:idSP and hdct.hoaDon.id=:idHD and order by soLuong desc";
         Transaction tran = s.beginTransaction();
         try{
-            TypedQuery<HoaDonChiTiet> query = s.createQuery(hql, HoaDonChiTiet.class);
+            TypedQuery<HoaDonChiTietHoaDon> query = s.createQuery(hql, HoaDonChiTietHoaDon.class);
             query.setParameter("idSP", idSP);
             query.setParameter("idHD", idHD);
             query.executeUpdate();
@@ -134,10 +134,10 @@ public class HoaDonRepository {
          return lstKM;
      }
      
-     public List<KhachHang> getAllKhachHang(){
-         List<KhachHang> lstKH = new ArrayList<>();
+     public List<KhachHangHoaDon> getAllKhachHang(){
+         List<KhachHangHoaDon> lstKH = new ArrayList<>();
          String hql = "from KhachHang order by ma desc";
-         TypedQuery<KhachHang> query = s.createQuery(hql, KhachHang.class);
+         TypedQuery<KhachHangHoaDon> query = s.createQuery(hql, KhachHangHoaDon.class);
          lstKH = query.getResultList();
          return lstKH;
      }

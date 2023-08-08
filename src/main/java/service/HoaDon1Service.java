@@ -4,31 +4,31 @@
  */
 package service;
 
-import domainModels.HoaDon;
-import domainModels.HoaDonChiTiet;
-import domainModels.KhachHang;
+import domainModels.HoaDon1;
+import domainModels.HoaDonChiTietHoaDon;
+import domainModels.KhachHangHoaDon;
 import domainModels.KhuyenMai;
 import domainModels.NhanVien;
 import java.util.List;
-import repositories.HoaDonRepository;
+import repositories.HoaDon1Repository;
 
 /**
  *
  * @author PhiLT
  */
-public class HoaDonService {
-    private HoaDonRepository hoaDonRepository = new HoaDonRepository();
+public class HoaDon1Service {
+    private HoaDon1Repository hoaDonRepository = new HoaDon1Repository();
     
-    public List<HoaDon> getALHoaDon(){
+    public List<HoaDon1> getALHoaDon(){
         return hoaDonRepository.getALHoaDon();
     }
-    public List<HoaDon> getHoaDonByMa(String ma){
+    public List<HoaDon1> getHoaDonByMa(String ma){
         return hoaDonRepository.getHoaDonByMa(ma);
     }
-    public HoaDon getOneHDByMa(String ma){
+    public HoaDon1 getOneHDByMa(String ma){
         return hoaDonRepository.getOneHDByMa(ma);
     }
-    public Boolean addOrUpdateHoaDon(HoaDon hoaDon){
+    public Boolean addOrUpdateHoaDon(HoaDon1 hoaDon){
         return hoaDonRepository.addOrUpdateHoaDon(hoaDon);
     }
     
@@ -36,13 +36,13 @@ public class HoaDonService {
         return hoaDonRepository.deleteHoaDon(id);
     }
     
-    public List<HoaDonChiTiet> getALLHDCT(String idHD){
+    public List<HoaDonChiTietHoaDon> getALLHDCT(String idHD){
         return hoaDonRepository.getAllHDCT(idHD);
     }
-     public HoaDonChiTiet getOneHDCT(String idSP, String idHD){
+     public HoaDonChiTietHoaDon getOneHDCT(String idSP, String idHD){
          return hoaDonRepository.getOneHDCT(idSP, idHD);
      }
-    public Boolean addOrUpdateHDCT(HoaDonChiTiet hdct){
+    public Boolean addOrUpdateHDCT(HoaDonChiTietHoaDon hdct){
         return hoaDonRepository.addOrUpdateHDCT(hdct);
     }
     
@@ -52,7 +52,7 @@ public class HoaDonService {
     public List<KhuyenMai> getAllKM(){
         return hoaDonRepository.getAllKM();
     }
-    public List<KhachHang> getAllKhachHang(){
+    public List<KhachHangHoaDon> getAllKhachHang(){
         return hoaDonRepository.getAllKhachHang();
     }
     public List<NhanVien> getAllNhanVien(){

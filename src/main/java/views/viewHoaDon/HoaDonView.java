@@ -4,9 +4,9 @@
  */
 package views.viewHoaDon;
 
-import domainModels.HoaDon;
-import domainModels.HoaDonChiTiet;
-import domainModels.KhachHang;
+import domainModels.HoaDon1;
+import domainModels.HoaDonChiTietHoaDon;
+import domainModels.KhachHangHoaDon;
 import domainModels.KhuyenMai;
 import domainModels.NhanVien;
 import java.math.BigDecimal;
@@ -22,14 +22,14 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import service.HoaDonService;
+import service.HoaDon1Service;
 
 /**
  *
  * @author PhiLT
  */
 public class HoaDonView extends javax.swing.JPanel {
-private HoaDonService hoaDonService = new HoaDonService();
+private HoaDon1Service hoaDonService = new HoaDon1Service();
 private SimpleDateFormat dfm = new SimpleDateFormat("yy-MM-dd");
     /**
      * Creates new form HoaDonView
@@ -44,10 +44,10 @@ private SimpleDateFormat dfm = new SimpleDateFormat("yy-MM-dd");
         loadCbbNV();
     }
     
-    private List<HoaDon> lstHoaDon ;
-    private List<HoaDonChiTiet> lstHDCT;
+    private List<HoaDon1> lstHoaDon ;
+    private List<HoaDonChiTietHoaDon> lstHDCT;
     private List<KhuyenMai> lstKM;
-    private List<KhachHang> lstKH;
+    private List<KhachHangHoaDon> lstKH;
     private List<NhanVien> lstNV;
     private DefaultTableModel tbModelHD;
     private DefaultTableModel tbModelHDCT;
@@ -67,7 +67,7 @@ private SimpleDateFormat dfm = new SimpleDateFormat("yy-MM-dd");
     private void loadCbbKH(){
         cbbKHModel = (DefaultComboBoxModel) cbbKhachHang.getModel();
         lstKH = hoaDonService.getAllKhachHang();
-        for (KhachHang kh : lstKH) {
+        for (KhachHangHoaDon kh : lstKH) {
             cbbKHModel.addElement(kh.getTen());
         }
     }
@@ -84,7 +84,7 @@ private void loadTableHoaDon(){
     lstHoaDon = new ArrayList<>();
     lstHoaDon = hoaDonService.getALHoaDon();
     tbModelHD.setRowCount(0);
-    for (HoaDon hoaDon : lstHoaDon) {
+    for (HoaDon1 hoaDon : lstHoaDon) {
         tbModelHD.addRow(new Object[]{
         hoaDon.getMa(),
             hoaDon.getNgayTao(),
@@ -104,7 +104,7 @@ private void loadTableHDCT(String idHD){
     lstHDCT = hoaDonService.getALLHDCT(idHD);
     if(lstHDCT.isEmpty()) return;
     tbModelHDCT.setRowCount(0);
-    for (HoaDonChiTiet hdct : lstHDCT) {
+    for (HoaDonChiTietHoaDon hdct : lstHDCT) {
         tbModelHDCT.addRow(new Object[]{
             hdct.getHoaDon()==null? "": hdct.getHoaDon().getMa(),
             hdct.getChiTietDoGo()==null? "":hdct.getChiTietDoGo().getTenSP(),
@@ -360,7 +360,7 @@ private void loadTableHDCT(String idHD){
         // TODO add your handling code here:
         int row = tbHoaDon.getSelectedRow();
         String ma = tbHoaDon.getValueAt(row, 0)+"";
-        HoaDon hd = hoaDonService.getOneHDByMa(ma);
+        HoaDon1 hd = hoaDonService.getOneHDByMa(ma);
         txtId.setText(hd.getId());
         txtMa.setText(hd.getMa());
         dcNgayTao.setDate(hd.getNgayTao());
@@ -391,7 +391,7 @@ private void loadTableHDCT(String idHD){
         String check = (String) cbbLocTrangThaiHD.getSelectedItem();
         tbModelHD.setRowCount(0);
         if(check.equalsIgnoreCase("Chờ thanh toán")){
-                for (HoaDon hd : lstHoaDon) {
+                for (HoaDon1 hd : lstHoaDon) {
                 if(hd.getTrangThaiHoaDon()==0){
                     tbModelHD.addRow(new Object[]{
         hd.getMa(),
@@ -406,7 +406,7 @@ private void loadTableHDCT(String idHD){
                 }
             }
     }else if(check.equalsIgnoreCase("Đã thanh toán")){
-            for (HoaDon hd : lstHoaDon) {
+            for (HoaDon1 hd : lstHoaDon) {
                 if(hd.getTrangThaiHoaDon()==1){
                     tbModelHD.addRow(new Object[]{
         hd.getMa(),
@@ -430,7 +430,7 @@ private void loadTableHDCT(String idHD){
         Integer trangThai = cbbTrangThai.getSelectedIndex();
         if(trangThai==0){
             
-        HoaDon hoaDon = new HoaDon();
+        HoaDon1 hoaDon = new HoaDon1();
         String id = txtId.getText();
         String ma = txtMa.getText();
         
@@ -477,7 +477,7 @@ private void loadTableHDCT(String idHD){
         if(viTriKH==0){
             hoaDon.setKhachHang(null);
         }else{
-            KhachHang kh = lstKH.get(viTriKH-1);
+            KhachHangHoaDon kh = lstKH.get(viTriKH-1);
         hoaDon.setKhachHang(kh);
         }
         if(viTriNV==0){
@@ -556,10 +556,10 @@ private void loadTableHDCT(String idHD){
         String ma = txtTimKiemHD.getText();
         
     }//GEN-LAST:event_txtTimKiemHDCaretUpdate
-private List<HoaDon> lstHDTimKiem = new ArrayList<>();
+private List<HoaDon1> lstHDTimKiem = new ArrayList<>();
     private void loadTBHDTimKiem(String ma){
     lstHDTimKiem = hoaDonService.getHoaDonByMa(ma);
-    for (HoaDon hd : lstHDTimKiem) {
+    for (HoaDon1 hd : lstHDTimKiem) {
                 
                     tbModelHD.addRow(new Object[]{
         hd.getMa(),

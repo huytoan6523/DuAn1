@@ -1,7 +1,7 @@
 package service;
 
-import domainModels.HoaDon;
-import domainModels.KhachHang;
+import domainModels.HoaDon1;
+import domainModels.KhachHangHoaDon;
 import java.util.List;
 import repositories.KhachHangRepository;
 import service.impl.IManageKhachHangServive;
@@ -22,33 +22,33 @@ public class KhachHangServiceImpl implements IManageKhachHangServive {
     }
     
     @Override
-    public List<KhachHang> getAll() {
-        List<KhachHang> khachHangs = this.khachHangRepository.findAll();
+    public List<KhachHangHoaDon> getAll() {
+        List<KhachHangHoaDon> khachHangs = this.khachHangRepository.findAll();
         return khachHangs;
     }
     
     @Override
-    public void addKhachHang(KhachHang khachHang) {
+    public void addKhachHang(KhachHangHoaDon khachHang) {
         this.khachHangRepository.insert(khachHang);
     }
     
     @Override
-    public void updateKhachHang(KhachHang khachHang) {
+    public void updateKhachHang(KhachHangHoaDon khachHang) {
         this.khachHangRepository.update(khachHang);
     }
 
     @Override
-    public KhachHang findByMa(String ma) {
+    public KhachHangHoaDon findByMa(String ma) {
         return this.khachHangRepository.findByMa(ma);
     }
 
     @Override
-    public void deleteKhachHang(KhachHang khachHang) {
+    public void deleteKhachHang(KhachHangHoaDon khachHang) {
         this.khachHangRepository.delete(khachHang);
     }
 
     @Override
-    public List<HoaDon> getHoaDonByKhachHang(KhachHang khachHang) {
+    public List<HoaDon1> getHoaDonByKhachHang(KhachHangHoaDon khachHang) {
         return this.khachHangRepository.getHoaDon(khachHang);
     }
     

@@ -5,8 +5,8 @@
 package service.impl;
 
 
-import domainModels.HoaDon;
-import domainModels.KhachHang;
+import domainModels.HoaDon1;
+import domainModels.KhachHangHoaDon;
 import java.util.List;
 
 /**
@@ -15,16 +15,16 @@ import java.util.List;
  */
 public interface IManageKhachHangServive {
 
-    List<KhachHang> getAll();
+    List<KhachHangHoaDon> getAll();
 
-    List<HoaDon> getHoaDonByKhachHang(KhachHang khachHang);
+    List<HoaDon1> getHoaDonByKhachHang(KhachHangHoaDon khachHang);
 
-    void addKhachHang(KhachHang khachHang);
+    void addKhachHang(KhachHangHoaDon khachHang);
 
-    void updateKhachHang(KhachHang khachHang);
+    void updateKhachHang(KhachHangHoaDon khachHang);
 
-    KhachHang findByMa(String ma);
+    KhachHangHoaDon findByMa(String ma);
 
-    void deleteKhachHang(KhachHang khachHang);
+    void deleteKhachHang(KhachHangHoaDon khachHang);
 
 }

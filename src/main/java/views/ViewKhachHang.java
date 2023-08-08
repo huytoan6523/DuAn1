@@ -5,8 +5,8 @@
 package views;
 
 
-import domainModels.HoaDon;
-import domainModels.KhachHang;
+import domainModels.HoaDon1;
+import domainModels.KhachHangHoaDon;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import service.KhachHangServiceImpl;
@@ -237,7 +237,7 @@ public class ViewKhachHang extends javax.swing.JFrame {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
 
-        KhachHang khachHang = getInformationFromView();
+        KhachHangHoaDon khachHang = getInformationFromView();
         this.khachHangService.addKhachHang(khachHang);
         LoadTableKhachHang();
         LoadTextForm();
@@ -246,7 +246,7 @@ public class ViewKhachHang extends javax.swing.JFrame {
     private void tbKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKhachHangMouseClicked
         // TODO add your handling code here:
         int viTri = tbKhachHang.getSelectedRow();
-        KhachHang khachHang = this.khachHangService.getAll().get(viTri);
+        KhachHangHoaDon khachHang = this.khachHangService.getAll().get(viTri);
         
         txtCode.setText(khachHang.getMa());
         txtName.setText(khachHang.getTen());
@@ -260,7 +260,7 @@ public class ViewKhachHang extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         int viTri = tbKhachHang.getSelectedRow();
-        KhachHang khachHang = this.khachHangService.getAll().get(viTri);
+        KhachHangHoaDon khachHang = this.khachHangService.getAll().get(viTri);
         this.khachHangService.deleteKhachHang(khachHang);
         LoadTableKhachHang();
     }//GEN-LAST:event_btnDeleteActionPerformed
@@ -268,9 +268,9 @@ public class ViewKhachHang extends javax.swing.JFrame {
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
         int viTri = tbKhachHang.getSelectedRow();
-        KhachHang khachHang = this.khachHangService.getAll().get(viTri);
+        KhachHangHoaDon khachHang = this.khachHangService.getAll().get(viTri);
         
-        KhachHang khachHang1 = getInformationFromView();
+        KhachHangHoaDon khachHang1 = getInformationFromView();
         khachHang1.setId(khachHang.getId());
         
         this.khachHangService.updateKhachHang(khachHang1);
@@ -343,7 +343,7 @@ public class ViewKhachHang extends javax.swing.JFrame {
         model = (DefaultTableModel) getTable(1);
 
         model.setRowCount(0);
-        for (KhachHang khachHang : khachHangService.getAll()) {
+        for (KhachHangHoaDon khachHang : khachHangService.getAll()) {
             model.addRow(new Object[]{
                 khachHang.getMa(),
                 khachHang.getTen(),
@@ -354,11 +354,11 @@ public class ViewKhachHang extends javax.swing.JFrame {
 
     }
     
-    private void LoadTableHoaDon(KhachHang khachHang) {
+    private void LoadTableHoaDon(KhachHangHoaDon khachHang) {
         model = (DefaultTableModel) getTable(0);
 
         model.setRowCount(0);
-        for (HoaDon hoaDon : khachHangService.getHoaDonByKhachHang(khachHang)) {
+        for (HoaDon1 hoaDon : khachHangService.getHoaDonByKhachHang(khachHang)) {
             model.addRow(new Object[]{
                 hoaDon.getMa(),
                 hoaDon.getNgayTao(),
@@ -369,8 +369,8 @@ public class ViewKhachHang extends javax.swing.JFrame {
 
     }
 
-    private KhachHang getInformationFromView() {
-        KhachHang khachHang = new KhachHang();
+    private KhachHangHoaDon getInformationFromView() {
+        KhachHangHoaDon khachHang = new KhachHangHoaDon();
         khachHang.setMa(txtCode.getText());
         khachHang.setTen(txtName.getText());
         khachHang.setSdt(txtPhoneNumber.getText());

@@ -1,13 +1,14 @@
 package utils;
 
+import domainModels.ChiTietDoGoHoaDon;
 import domainModels.ChucVu;
 import domainModels.CuaHang;
 import domainModels.DonViTinh;
 import domainModels.DongGo;
-import domainModels.HoaDon;
-import domainModels.HoaDonChiTiet;
+import domainModels.HoaDon1;
+import domainModels.HoaDonChiTietHoaDon;
 import domainModels.HoaDonChiTietId;
-import domainModels.KhachHang;
+import domainModels.KhachHangHoaDon;
 import domainModels.KhuyenMai;
 import domainModels.LoaiSP;
 import domainModels.NguonGoc;
@@ -40,7 +41,7 @@ public class HibernateUtil {
         properties.put(Environment.SHOW_SQL, "true");
 
         conf.setProperties(properties);
-        conf.addAnnotatedClass(KhachHang.class);
+        conf.addAnnotatedClass(KhachHangHoaDon.class);
         conf.addAnnotatedClass(KhuyenMai.class);
         conf.addAnnotatedClass(ChucVu.class);
         conf.addAnnotatedClass(CuaHang.class);
@@ -52,9 +53,10 @@ public class HibernateUtil {
         conf.addAnnotatedClass(NhanVien.class);
         conf.addAnnotatedClass(SPCT.class);
         conf.addAnnotatedClass(SanPham.class);
-        conf.addAnnotatedClass(HoaDon.class);
-        conf.addAnnotatedClass(HoaDonChiTiet.class);
+        conf.addAnnotatedClass(HoaDon1.class);
+        conf.addAnnotatedClass(HoaDonChiTietHoaDon.class);
         conf.addAnnotatedClass(HoaDonChiTietId.class);
+        conf.addAnnotatedClass(ChiTietDoGoHoaDon.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();
